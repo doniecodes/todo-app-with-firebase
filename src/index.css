@@ -1,0 +1,473 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-color: #fff;
+}
+
+#todo-li input:checked + .text{
+  color: gray;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.header{
+  background-image: url("/images/landscape.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+  padding: 1rem 3rem;
+  height: 200px;
+}
+
+/* Header nav */
+.header-nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-links{
+  position: relative;
+}
+.nav-links li{
+  display: flex;
+  gap: 2rem;
+}
+.link {
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.user-account-div {
+  background-color: hsl(0, 0%, 100%);
+  padding: 0.6rem 1rem;
+  border-radius: 0.3rem;
+  position: absolute;
+  top: 30px;
+  left: -30px;
+  display: none;
+}
+.user-account-div.active {
+  display: block;
+}
+.user-email {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.user-account-div p {
+  font-weight: 500;
+  padding-top: 0.5rem;
+  margin-top: 0.3rem;
+  border-top: 2px solid hsl(0, 0%, 70%);
+}
+
+
+.header-form-wrapper{
+  text-align: center;
+}
+.heading-1{
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.3rem;
+}
+.header-form{
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header-form div{
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  height: 50px;
+}
+.form-input{
+  width: 100%;
+  border-radius: 0.2rem;
+  padding: 0.3rem 0.5rem;
+  outline: none;
+  background-color: hsl(0, 0%, 100%);
+}
+.add-btn{
+  position: absolute;
+  right: 0;
+  padding: 0.3rem 0.8rem;
+  background-color: hsl(0, 0%, 10%);
+  color: #fff;
+}
+
+.todos-section {
+  padding: 50px 0;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+.todos-wrapper {
+  max-width: 550px;
+  margin: 0 auto;
+}
+.todos-list{
+  max-width: 550px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+.todo-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 2px solid hsl(0, 0%, 94%);
+}
+
+.todo-item label{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+.todo-label input:checked + .todo-text{
+  color: hsl(0, 0%, 50%);
+  text-decoration: line-through 1.5px hsl(0, 0%, 50%);
+}
+
+.delete-btn {
+  color: hsl(0, 0%, 50%);
+}
+.delete-btn:hover {
+  color: hsl(0, 82%, 59%);
+}
+.edit-btn{
+  margin-right: 1rem;
+  color: hsl(0, 0%, 40%);
+}
+.edit-btn:hover{
+  margin-right: 1rem;
+  color: hsl(0, 0%, 0%);
+}
+
+.todo-completed{
+  text-decoration: line-through;
+  color: hsl(0, 0%, 40%);
+}
+.todo-text{
+  font-weight: 500;
+  width: 100%;
+  padding: 0.250rem 0;
+  text-wrap: none;
+  text-decoration: none;
+  pointer-events: none;
+  resize: unset;
+}
+.update-form {
+  width: 500px;
+  margin: 0 auto;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  background-color: hsl(0, 0%, 93%);
+  padding: 1rem;
+  border-radius: 0.2rem;
+  box-shadow: 5px 5px 20px -10px;
+  /* box-shadow: 20px 20px 20px 1000px rgba(0, 0, 0, 0.2); */
+  display: none;
+}
+.update-form.active {
+  display: block;
+}
+@media (max-width: 600px){
+  .update-form {
+    width: 400px;
+    margin: 0 auto;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    background-color: hsl(0, 0%, 93%);
+    padding: 1rem;
+    border-radius: 0.2rem;
+    box-shadow: 20px 20px 20px 1000px rgba(0, 0, 0, 0.05);
+  }
+}
+textarea {
+  width: 100%;
+  height: 60px;
+  background-color: hsl(0, 0%, 96%);
+  border: 2px solid hsl(0, 0%, 80%);
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  resize: none;
+}
+textarea:focus {
+  outline: none;
+}
+.update-btns {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 0 1rem;
+  margin-top: 0.5rem;
+}
+.update-btn-cancel {
+  background-color: hsl(0, 0%, 50%);
+  color: #fff;
+  padding: 0.2rem  1rem ;
+  border-radius: 0.3rem;
+}
+.update-btn-update {
+  background-color: hsl(0, 82%, 59%);
+  color: #fff;
+  padding: 0.2rem  1rem ;
+  border-radius: 0.3rem;
+}
+
+
+.delete-all-div {
+  background-color: #fff;
+  max-width: 450px;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 2rem;
+  box-shadow: 5px 5px 30px -15px;
+  display: none;
+}
+.delete-all-div.active {
+  display: block;
+}
+.delete-all-div p {
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.delete-all-div button {
+  background-color: hsl(214, 30%, 2%);
+  color: #fff;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.3rem;
+}
+.delete-all-div div {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.delete-all-div .cancel-del-btn {
+  background-color: hsl(0, 0%, 30%);
+}
+.delete-all-div .proceed-del-btn {
+  background-color: hsl(0, 79%, 44%);
+}
+.empty-list {
+  color: hsl(228, 3%, 38%);
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2rem;
+}
+.empty-list p:nth-child(2){
+  color: hsl(228, 3%, 38%);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+}
+.login-first-error {
+  color: hsl(0, 79%, 44%);
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.2rem;
+  transform: translateY(-20px);
+}
+
+
+/* Todo filters */
+#todo-filters{
+  margin-top: 1.3rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: hsl(0, 0%, 60%);
+  gap: 1.2rem;
+}
+.filter{
+  text-decoration: underline;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.filter-all{
+  margin-left: 3rem;
+}
+
+/* Login */
+.form {
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: hsl(0, 0%, 100%);
+  padding: 1rem;
+  transform: translateY(-50px);
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 20px -12px;
+}
+.form-heading {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 2.5rem;
+  color: hsl(0, 0%, 20%);
+}
+.form label {
+  display: block;
+  font-weight: 500;
+}
+.form input {
+  border: 2px solid hsl(0, 0%, 50%);
+  outline: none;
+  border-radius: 0.3rem;
+  width: 100%;
+  padding: 0.1rem 0.6rem;
+  margin-bottom: 0.3rem;
+}
+.form-group {
+  margin-bottom: 0.5rem;
+}
+.error{
+  color: hsl(0, 65%, 55%);
+  font-weight: 600;
+}
+.form-btn{
+  background-color: hsl(196, 44%, 23%);
+  color: #fff;
+  padding: 0.4rem 2rem;
+  border-radius: 100vmax;
+  margin-top: 1rem;
+}
+
+
+/* Switch */
+.switch{
+  cursor: pointer;
+} 
+
+.switcher.light{
+  font-size: 1.7rem;
+  border-radius: 50%;
+  padding: 0.2rem;
+  border: 2px dotted #000;
+  color: #000;
+}
+.switcher.dark{
+  color: #fff;
+  font-size: 1.7rem;
+  border-radius: 50%;
+  padding: 0.2rem;
+  border: 2px dotted #fff;
+}
+
+
+::-webkit-scrollbar{
+  background-color: hsl(0, 0%, 98%);
+  border-radius: 100vmax;
+}
+::-webkit-scrollbar-thumb{
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 100vmax;
+}
+
+.header.dark {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.849), rgba(0, 0, 0, 0.829)), url("/images/landscape.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+  padding: 1rem 3rem;
+  height: 200px;
+  color: #fff;
+}
+.header.dark .link {
+  color: #fff;
+}
+
+.header.dark .form-input {
+  background-color: #000;
+}
+
+.todos-section.dark {
+  background-color: hsl(0, 0%, 10%);
+  height: 100vh;
+  position: relative;
+}
+.todos-wrapper.dark {
+  background-color: hsl(0, 0%, 10%)
+}
+
+.todos-list.dark{
+  color: hsl(0, 0%, 80%);
+}
+.todos-list.dark .todo-item input {
+  background-color: transparent;
+  border: 10px solid hsl(0, 0%, 10%);
+}
+.todos-list.dark textarea{
+  background-color: transparent;
+}
+.todos-list.dark .todo-item {
+  border-bottom: 2px solid hsl(0, 0%, 8%);
+}
+.header.dark + .empty-list{
+  color: hsl(0, 0%, 98%);
+}
+.todos-list.dark .todo-item .edit-btn:hover {
+  color: #fff;
+}
+.todos-list.dark .update-form {
+  position: absolute;
+  top: 10%;
+  box-shadow: 10px 10px 50px -15px hsl(0, 0%, 0%);
+  background-color: hsl(0, 0%, 20%);
+}
+.todos-list.dark textarea {
+  background-color: hsl(0, 0%, 18%);
+  border-color: hsl(0, 0%, 15%);
+  color: #fff;
+}
+.todos-list.dark .update-btn-cancel {
+  background-color: hsl(0, 0%, 30%);
+}
+
+.delete-all-div.dark {
+  background-color: hsl(0, 0%, 20%);
+  color: #fff;
+  box-shadow: 10px 10px 30px -15px hsl(0, 0%, 0%);
+  top: 10%;
+}
+.header.dark .user-account-div {
+  background-color: hsl(0, 0%, 5%);
+  color: #fff;
+}
+.header.dark .user-account-div p {
+  border-top-color: hsl(0, 0%, 30%);
+}
