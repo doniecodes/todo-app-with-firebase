@@ -5,12 +5,12 @@ import { getAuth } from "firebase/auth"
 export const FbConfig = ()=> {
     
 const firebaseConfig = {
-    apiKey: "AIzaSyAjB91P-JK5tlBzd2eOxtv_6-l0Txb6Y50",
-    authDomain: "todo-auth-e1a81.firebaseapp.com",
-    projectId: "todo-auth-e1a81",
-    storageBucket: "todo-auth-e1a81.firebasestorage.app",
-    messagingSenderId: "1063415641224",
-    appId: "1:1063415641224:web:51b0dbf9735414b357db3d"
+    apiKey: import.meta.env.VITE_API_KEY,
+    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_APP_ID
   };
 
   initializeApp(firebaseConfig);
